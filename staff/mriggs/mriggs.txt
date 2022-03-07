@@ -3,6 +3,5 @@ Martin
 Agent de terrain
 
 kit
-taser
 lacrymo
 menottes
