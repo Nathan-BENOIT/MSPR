@@ -1,10 +1,10 @@
 mousqueton  Mousqueton
 gants   Gants d'intervention
-brassard    Brassard de sécurité
+brassard    Brassard de securite
 menottes    Porte menottes
 cyno    Bandeau agent cynophyle
 talky   Taklies waklies
 lampe   Lampe Torche
 Kit     Kit oreillette
 taser   tasers
-lacrymo Bombes lacrymogènes
+lacrymo Bombes lacrymogenes
