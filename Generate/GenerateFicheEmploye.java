@@ -1,12 +1,17 @@
 package Generate;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
+import java.util.ArrayList;
+
+import Parsing.Parsing;
 
 public class GenerateFicheEmploye {
 
-    public static void generateHtmlFileEmploye(String nom) throws IOException {
+    public static void generateHtmlFileEmploye(String nom) throws Exception {
         String filePath = String.format("HTML/fiche_employe_%s.html", nom);
+
+        ArrayList<String> listAgent = Parsing.personalParsing(nom);
+        //ArrayList<String> listMatos = Parsing.matosParsing(nom);
 
         File htmlSortant = new File(filePath);
 
@@ -52,12 +57,18 @@ public class GenerateFicheEmploye {
         htmlWriter.write("<h1>Fiche employé");
         htmlWriter.write("</h1>");
         htmlWriter.write("\n");
-        htmlWriter.write("<h3>Prénom");
-        htmlWriter.write("</h3>");
+        htmlWriter.write("<p class='texte'>" + listAgent.get(1) + " " + listAgent.get(0) + "</p>");
+        htmlWriter.write("\n");
+        htmlWriter.write("<p class='texte'>" + listAgent.get(2) + "</p>");
+        htmlWriter.write("\n");
+        /*for(int i = 0; i < listMatos.size(); i++){
+            htmlWriter.write("<p class='texte'>" + listMatos.get(i) + "</p></br></br>");
+            htmlWriter.write("\n");
+        }*/
         htmlWriter.write("\n");
         htmlWriter.write("</div>");
         htmlWriter.write("\n");
-        htmlWriter.write("<div class='listeEmployes'>");
+        htmlWriter.write("<div class=''>");
         htmlWriter.write("\n");
         htmlWriter.write("</div>");
         htmlWriter.write("\n");

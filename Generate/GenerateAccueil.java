@@ -1,27 +1,15 @@
 package Generate;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+
+import Parsing.Parsing;
 
 public class GenerateAccueil {
 
-    public List<String> ListeEmployes() {
-        List<String> employesList = new ArrayList<String>(){
-            {
-                add("Simon");
-                add("Stéphane");
-                add("Margaux");
-            }
-        };
+    public static void generateHtmlFileAccueil() throws Exception {
 
-        return employesList;
-    }
-
-    public static void generateHtmlFileAccueil() throws IOException {
-
-        GenerateAccueil liste = new GenerateAccueil();
+        List<String> listEmployes = Parsing.StaffParsing();
 
         // HTML
         File htmlSortant = new File("HTML/accueil.html");
@@ -74,8 +62,9 @@ public class GenerateAccueil {
         htmlWriter.write("<div class='listeEmployes'>");
         htmlWriter.write("\n");
 
-        for(int i = 0; i < liste.ListeEmployes().size(); i++){
-            htmlWriter.write("<a href='fiche_employe_" + liste.ListeEmployes().get(i) + ".html' class='liens'>" + liste.ListeEmployes().get(i) + "</a></br>");
+        for(int i = 0; i < listEmployes.size(); i++){
+            List<String> listAgent = Parsing.personalParsing(listEmployes.get(i));
+            htmlWriter.write("<a href='fiche_employe_" + listEmployes.get(i) + ".html' class='texte'>" + listAgent.get(1) + " " + listAgent.get(0) + "</a></br></br>");
             htmlWriter.write("\n");
         }
 
@@ -186,7 +175,8 @@ public class GenerateAccueil {
         cssWriter.write("padding: 0.3rem;");
         cssWriter.write("\n");
         cssWriter.write("}");
-        cssWriter.write(".liens {");
+        cssWriter.write("\n");
+        cssWriter.write(".texte {");
         cssWriter.write("\n");
         cssWriter.write("font-size: 25px;");
         cssWriter.write("\n");
